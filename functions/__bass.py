@@ -61,7 +61,7 @@ def gen_script():
     pipe_r, pipe_w = os.pipe()
     if sys.version_info >= (3, 4):
       os.set_inheritable(pipe_w, True)
-    command = 'eval $1 && ({}; alias) >&{}'.format(
+    command = 'shift; eval $1 && ({}; alias) >&{}'.format(
         env_reader,
         pipe_w
     )
